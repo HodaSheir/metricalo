@@ -19,7 +19,7 @@ class PaymentService
 
   private function processShift4(array $data): array
   {
-    $response = $this->httpClient->request('POST', 'https://dev.shift4.com/docs/api#charge-create', [
+    $response = $this->httpClient->request('POST', 'https://api.shift4.com/v1/charges', [
       'headers' => [
         'Authorization' => 'Bearer ' . $this->shift4Key,  // Ensure the API key is prefixed with "Bearer"
         'Content-Type' => 'application/json'
@@ -41,7 +41,7 @@ class PaymentService
 
   private function processAci(array $data): array
   {
-    $response = $this->httpClient->request('POST', 'https://docs.oppwa.com/integrations/server-to-server#syncPayment', [
+    $response = $this->httpClient->request('POST', 'https://test.oppwa.com/v1/payments', [
       'query' => [
         'entityId' => $this->aciEntityId,
         'amount' => $data['amount'],
